@@ -34,3 +34,12 @@ class FeedBackPage extends BasePage {
 }
 }
 export default new FeedBackPage()
+
+export function evaluateMathExpression(expression) {
+    try {
+        return eval(expression);
+    } catch (error) {
+        console.error('Chyba při výpočtu výrazu:', error);
+        return null;
+    }
+}
