@@ -31,7 +31,7 @@ export function findItemByKeyword(keyword) {
 //             const text = $el.text().toLowerCase();
 //             if (text.includes(itemName.toLowerCase())) {
 //                 cy.wrap($el).click();
-//                 return false; 
+//                 return false;
 //             }
 //         });
 //     z
@@ -49,3 +49,11 @@ export function findItemByKeyword(keyword) {
 //     }).first().click()
 //
 // }
+export function evaluateMathExpression(expression) {
+    try {
+        return eval(expression);
+    } catch (error) {
+        console.error
+        return null;
+    }
+}
