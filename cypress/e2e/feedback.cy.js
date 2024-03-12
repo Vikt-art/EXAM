@@ -1,7 +1,9 @@
-
+import user from '../fixtures/user.json'
 import {solveCaptcha} from "../support/helper";
 import feedBackPage from "../support/pages/FeedbackPage";
 import loginPage from "../support/pages/LoginPage";
+import {faker} from "@faker-js/faker";
+user.answer = faker.person.gender()
 
 describe('Feedback positive scenarios', () => {
     it ('Feedback', () => {
@@ -9,7 +11,7 @@ describe('Feedback positive scenarios', () => {
         loginPage.closeBanner();
         feedBackPage.getTitleField().should("contain", "Customer Feedback");
         feedBackPage.getAuthorField().should("be.disabled");
-        feedBackPage.getCommentField().type("Positive feedback");
+        feedBackPage.getCommentField().type(user.answer);
         feedBackPage.getRatingTitle().should("contain", "Rating");
         feedBackPage.getRatingSlider().invoke('val', 5).trigger('input').click();
         feedBackPage.getCaptchaTitle().should("contain.text", "CAPTCHA");

@@ -1,24 +1,21 @@
 import user from '../fixtures/user.json'
-import {FIND,FIND2, findItem, findItemByKeyword} from "../support/helper";
-import MainPage from "../support/pages/MainPage";
+import {findItemByKeyword} from "../support/helper";
 import loginPage from "../support/pages/LoginPage";
 import mainPage from "../support/pages/MainPage";
 import basketPage from "../support/pages/BasketPage";
 import addressPage from "../support/pages/AddressPage";
 import deliveryAddressPage from "../support/pages/DeliveryAddressPage";
-import SelectAddressPage from "../support/pages/SelectAddressPage";
 import selectAddressPage from "../support/pages/SelectAddressPage";
 import paymentOptionsPage from "../support/pages/PaymentOptionsPage";
 import orderPage from "../support/pages/OrderPage";
 import searchPage from "../support/pages/SearchPage";
-import { faker} from "@faker-js/faker";
+import {faker} from "@faker-js/faker";
 
 user.name = faker.person.firstName()
 user.country = faker.location.country()
 user.address = faker.location.street()
 user.city = faker.location.city()
 user.state = faker.location.state()
-
 
 
 describe('Order positive scenarios', () => {
@@ -57,6 +54,6 @@ describe('Order positive scenarios', () => {
             orderPage.getcheckoutButton().click();
             orderPage.getConfirmMessage().should('contain', 'Thank you for your purchase!')
         })
-        })
+    })
 })
 
