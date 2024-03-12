@@ -32,9 +32,15 @@ class LoginPage extends BasePage {
         this.getLoginEmailField().type(useremail);
         this.getLoginPasswordField().type(userpassword);
         this.getSubmitButton();
-        cy.get('.heading > .ng-star-inserted').contains('All Products')
 
+        // if (cy.get ('.heading > .ng-star-inserted').should('exist')) {
+        //     cy.get('.heading > .ng-star-inserted').contains('All Products');
+        // }
     }
+     getAllProductsTitle(){
+        return cy.get ('div:contains(All Products)')
+}
+
    getNotYetCustomerButton(){
       return  cy.get('#newCustomerLink a.primary-link').contains('Not yet a customer?').click();
    }

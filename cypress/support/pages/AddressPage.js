@@ -31,7 +31,7 @@ class AddressPage extends BasePage {
         return cy.get('[placeholder="Please provide a city."]');
     }
     getStateField(){
-        cy.log('State should be filled')
+        cy.log('State  should be filled')
         return cy.get('[placeholder="Please provide a state."]');
     }
     getSubmitButton(){

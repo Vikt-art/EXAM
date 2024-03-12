@@ -1,5 +1,10 @@
 import user from '../fixtures/user.json'
 import registrationPage from "../support/pages/RegistrationPage";
+import {faker} from "@faker-js/faker";
+user.email = faker.internet.email({ firstName: 'Jeanne', lastName: 'Doe', provider: 'example.fakerjs.dev', allowSpecialCharacters: true })
+user.password = faker.internet.password({ length: 20, memorable: true, pattern: /[A-Z]/, prefix: 'Hello ' })
+user.answer = faker.person.gender()
+
 
 describe('Registration positive scenarios', () => {
 
@@ -15,8 +20,8 @@ describe('Registration positive scenarios', () => {
     registrationPage.getSecurityQuestionField();
     registrationPage.getSelectQuestionField();
     registrationPage.getAnswerQuestionField();
-    registrationPage.getAnswerQuestionField().should("have.prop", 'value', user.answer);
-    registrationPage.getRegisterButton()
+    registrationPage.getAnswerQuestionField().type(user.answer);
+    registrationPage.getRegisterButton().click()
   });
 });
   describe('Registration negative scenarios', () => {

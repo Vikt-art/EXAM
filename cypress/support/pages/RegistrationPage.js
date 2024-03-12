@@ -13,8 +13,8 @@ class RegistrationPage extends BasePage {
         cy.log('Close Banner')
         return cy.get("[aria-label=\'Close Welcome Banner\']").click();
     }
-    getEmailField() {
 
+    getEmailField() {
         return cy.get('#emailControl');
     }
 
@@ -22,15 +22,19 @@ class RegistrationPage extends BasePage {
         return cy.get('#passwordControl');
 
     }
+
     getRepeatPasswordField() {
         return cy.get('#repeatPasswordControl');
     }
+
     getSecurityQuestionField() {
         return cy.get('[name="securityQuestion"]').click({force: true});
     }
+
     getSelectQuestionField() {
         return cy.get('span:contains( Your eldest siblings middle name)').click();
     }
+
     getAnswerQuestionField() {
         return cy.get("[placeholder ='Answer to your security question']")
     }
@@ -39,27 +43,29 @@ class RegistrationPage extends BasePage {
         return cy.get('#registerButton').click();
     }
 
-    getErrorMessageText(){
-        return cy.get ('#emailControl').parents('.mat-form-field-wrapper').find('mat-error');
+    getErrorMessageText() {
+        return cy.get('#emailControl').parents('.mat-form-field-wrapper').find('mat-error');
     }
 
-    getErrorMessageText2(){
+    getErrorMessageText2() {
         return cy.get('#passwordControl').parents('.mat-form-field-wrapper').find('mat-error');
     }
 
-    getErrorMessageText3(){
-        return cy.get ('#repeatPasswordControl').parents('.mat-form-field-wrapper').find('mat-error')
+    getErrorMessageText3() {
+        return cy.get('#repeatPasswordControl').parents('.mat-form-field-wrapper').find('mat-error')
     }
-
-    fillRegistrationField(email, password){
+    fillRegistrationFields(useremail, userpassword, answer) {
         cy.log('Fill in registration fields');
-        this.getEmailField().type('viktoriya1@gmail.com');
-        this.getPasswordField().type(password);
-        this.getRepeatPasswordField().type(password);
+        this.getEmailField().type(useremail);
+        this.getPasswordField().type(userpassword);
+        this.getRepeatPasswordField().type(userpassword);
         this.getSecurityQuestionField();
-        this.getSelectQuestionField();
-        this.getAnswerQuestionField().type('test');
-        this.getRegisterButton()
+        this.getSelectQuestionField()
+        this.getAnswerQuestionField();
+        this.getAnswerQuestionField().type(user.answer);
+        this.getRegisterButton().click()
+
+
     }
 }
 export default new RegistrationPage()

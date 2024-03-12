@@ -1,59 +1,26 @@
 export function findItem(name) {
     cy.log('Search Item');
-    cy.get('body').then((body) => {
-        if (body.find('.item-name:contains("' + name + '")').length > 0) {
-            cy.get('.item-name:contains("' + name + '")').click();
-            cy.get('[aria-label="Add to Basket"]').click();
-        }
+    let mojElement = cy.get('.item-name').filter((index, element) => {
+        return new RegExp(name).test(element.textContent);
+
+
     });
+    mojElement.parents('.mat-grid-tile-content').find('button[aria-label="Add to Basket"]').click()
+
 }
 
 export function findItemByKeyword(keyword) {
     cy.log('Search Item by Keyword');
     cy.visit('https://juice-shop-sanitarskyi.herokuapp.com/#/search');
-    cy.get('[type="text"]').should('be.visible');
-    cy.get('[type="text"]').type('text', {force: true});
-    cy.get('[type="text"]').type(keyword).type('{enter}');
+    // cy.get('[type="text"]').should('be.visible');
+    cy.get('#searchQuery').click()
+    cy.get('[type="text"]').type(keyword, {force: true}).type('{enter}');
+    cy.get('[aria-label="Add to Basket"]').click()
 
-    cy.get('.item-name').each(($el) => {
-        const text = $el.text().toLowerCase();
-        if (text.includes(keyword.toLowerCase())) {
-            cy.wrap($el).click();
-            cy.get('[aria-label="Add to Basket"]').click();
-        }
-    });
+  // findItem(keyword)
 }
 
-//     export function FIND2 (itemName) {
-//         cy.visit('https://juice-shop-sanitarskyi.herokuapp.com/#/search');
-//
-//         cy.get('.item-name').each(($el) => {
-//             const text = $el.text().toLowerCase();
-//             if (text.includes(itemName.toLowerCase())) {
-//                 cy.wrap($el).click();
-//                 return false;
-//             }
-//         });
-//     z
-//
+export function solveCaptcha() {
+    cy.get('#captcha').invoke('text').then( captchaText => {
+        const result = eval(captchaText); cy.get('[data-placeholder="Please enter the result of the CAPTCHA."]').type(result); }) }
 
-
-
-
-
-// export function FIND (itemName) {
-//     cy.visit('https://juice-shop-sanitarskyi.herokuapp.com/#/search');
-//
-//     cy.get('.item-name').filter((index, element) => {
-//         return new RegExp(itemName, 'i').test(element.textContent);
-//     }).first().click()
-//
-// }
-export function evaluateMathExpression(expression) {
-    try {
-        return eval(expression);
-    } catch (error) {
-        console.error
-        return null;
-    }
-}

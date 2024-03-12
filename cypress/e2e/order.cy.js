@@ -12,20 +12,30 @@ import SelectAddressPage from "../support/pages/SelectAddressPage";
 import selectAddressPage from "../support/pages/SelectAddressPage";
 import paymentOptionsPage from "../support/pages/PaymentOptionsPage";
 import orderPage from "../support/pages/OrderPage";
-
+import searchPage from "../support/pages/SearchPage";
+import {fa, faker} from "@faker-js/faker";
+user.ZIP = faker.location.zipCode()
+user.name = faker.person.firstName()
+user.country = faker.location.country()
+user.phone = faker.phone.number()
+user.address = faker.location.street()
+user.city = faker.location.city()
+user.state = faker.location.state()
+user.cardnumber = faker.finance.creditCardNumber()
+user.
 
 describe('Order positive scenarios', () => {
     describe('Order positive scenarios', () => {
-        it.only('Find an Item', () => {
+        it('Find an Item', () => {
             mainPage.visit();
             mainPage.closeBanner();
             mainPage.getAccountButton();
             mainPage.getLoginButton();
             loginPage.fillLoginFields(user.email, user.password);
-            // cy.get('div[class = "item-name"]:contains( Banana Juice )')
-            // findItem('banana');
-            // findItemByKeyword('banana')
-            basketPage.getCheckoutBasketField();
+
+            findItemByKeyword('Banana Juice (1000ml)')
+            searchPage.getBasketField().click();
+            basketPage.getCheckoutBasketField()
             addressPage.getNewAddressIcon();
             addressPage.getCountryField().type(user.country);
             addressPage.getUserNameField().type(user.name);
@@ -40,10 +50,10 @@ describe('Order positive scenarios', () => {
             deliveryAddressPage.getChooseDeliverySpeedField().click();
             deliveryAddressPage.getContinueButton().click();
             paymentOptionsPage.getAddNewCardField().click();
-            paymentOptionsPage.getCardNamefield().type(user.name);
+            paymentOptionsPage.getCardNameField().eq(1).type(user.name);
             paymentOptionsPage.getCardNumberField().type(user.cardnumber);
-            paymentOptionsPage.getExpireMonthField();
-            paymentOptionsPage.getExpireYearField();
+            paymentOptionsPage.getExpireMonthField().eq(0).select(2);
+            paymentOptionsPage.getExpireYearField().eq(1).select('2090');
             paymentOptionsPage.getSubmitButton().click();
             paymentOptionsPage.getSelectCardIcon().click();
             paymentOptionsPage.getContinueButton().click();

@@ -5,23 +5,23 @@ class PaymentOptionsPage extends BasePage {
         return cy.get('mat-panel-title:contains( Add new card )');
     }
 
-    getCardNamefield() {
-        return cy.get('input[type="text"]').eq(1);
+    getCardNameField() {
+        return cy.get('input[type="text"]');
     }
     getCardNumberField(){
         return cy.get('input[type="number"]').eq(0);
     }
     getExpireMonthField(){
-        return cy.get(('select').eq(0).select(2));
+        return cy.get(('select'))
     }
     getExpireYearField(){
-        return cy.get(('select').eq(1).select('2090'));
+        return cy.get(('select'));
     }
     getSubmitButton(){
         return cy.get('span:contains(Submit)');
     }
      getSelectCardIcon(){
-        return cy.get('mat-table').find('mat-row').last().find('.mat-cell.cdk-column-Selection').find('input[type="radio"]');
+        return cy.get('[role="row"]:last');
 }
     getContinueButton(){
         return cy.get('.mat-button-wrapper').contains('Continue');
