@@ -17,7 +17,7 @@ export function findItemByKeyword(keyword) {
     cy.get('[type="text"]').type(keyword, {force: true}).type('{enter}');
     cy.get('[aria-label="Add to Basket"]').click()
 
-  // findItem(keyword)
+
 }
 
 export function solveCaptcha() {

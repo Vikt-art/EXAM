@@ -1,7 +1,5 @@
-import user from '../fixtures/user.json'
+
 import {solveCaptcha} from "../support/helper";
-import FeedbackPage from "../support/pages/LoginPage";
-import LoginPage from "../support/pages/LoginPage";
 import feedBackPage from "../support/pages/FeedbackPage";
 import loginPage from "../support/pages/LoginPage";
 

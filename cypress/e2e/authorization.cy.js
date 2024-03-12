@@ -5,6 +5,8 @@ import {faker} from "@faker-js/faker";
 user.email = faker.internet.email({ firstName: 'Jeanne', lastName: 'Doe', provider: 'example.fakerjs.dev', allowSpecialCharacters: true })
 user.password = faker.internet.password({ length: 20, memorable: true, pattern: /[A-Z]/, prefix: 'Hello ' })
 user.answer = faker.person.gender()
+
+describe('Authorization positive scenarios', () => {
     it('Authorization', () => {
         registrationPage.visit()
         registrationPage.closeBanner()
@@ -13,7 +15,8 @@ user.answer = faker.person.gender()
         loginPage.fillLoginFields(user.email,user.password);
         loginPage.getAllProductsTitle();
 
-});
+    });
+
     describe('Authorization negative scenarios', () => {
         it('Authorization with invalid email', () => {
             loginPage.visit()
@@ -29,13 +32,6 @@ user.answer = faker.person.gender()
             loginPage.getErrorMessageText().should("contain", "Invalid email or password")
         });
 
-
-// it.only('Feed Back', () => {
-//     cy.visit('https://juice-shop-sanitarskyi.herokuapp.com/#/contact');
-//     loginPage.closeBanner()
-//
-//     cy.get('[data-placeholder="What did you like or dislike?"]').type('ccccc')
-//
-//     cy.get('mat-slider#rating[aria-valuenow="5"]')
-//     cy.get('[data-placeholder="Please enter the result of the CAPTCHA."]').type(5)
+    });
 });
+
