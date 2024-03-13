@@ -15,43 +15,53 @@ class RegistrationPage extends BasePage {
     }
 
     getEmailField() {
+        cy.log ('Fill email field')
         return cy.get('#emailControl');
     }
 
     getPasswordField() {
+        cy.log ('Fill password field')
         return cy.get('#passwordControl');
 
     }
 
     getRepeatPasswordField() {
+        cy.log ('Fill repeat password field')
         return cy.get('#repeatPasswordControl');
     }
 
     getSecurityQuestionField() {
+        cy.log ('Open dropdown of security question field')
         return cy.get('[name="securityQuestion"]').click({force: true});
     }
 
     getSelectQuestionField() {
+        cy.log ('Select security question')
         return cy.get('span:contains( Your eldest siblings middle name)').click();
     }
 
     getAnswerQuestionField() {
+        cy.log ('Fill answer field')
         return cy.get("[placeholder ='Answer to your security question']")
     }
 
     getRegisterButton() {
+        cy.log ('Submit registration')
         return cy.get('#registerButton').click();
     }
 
     getErrorMessageText() {
+        cy.log ('Error message should be appeared')
         return cy.get('#emailControl').parents('.mat-form-field-wrapper').find('mat-error');
     }
 
     getErrorMessageText2() {
+        cy.log ('Error message should be appeared')
         return cy.get('#passwordControl').parents('.mat-form-field-wrapper').find('mat-error');
     }
 
     getErrorMessageText3() {
+        cy.log ('Error message should be appeared')
         return cy.get('#repeatPasswordControl').parents('.mat-form-field-wrapper').find('mat-error')
     }
     fillRegistrationFields(useremail, userpassword, answer) {

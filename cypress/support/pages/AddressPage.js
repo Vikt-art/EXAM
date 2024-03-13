@@ -3,7 +3,6 @@ import BasePage from "./BasePage";
 class AddressPage extends BasePage {
 
     getNewAddressIcon (){
-        cy.log('Address should be filled')
         return cy.get('[aria-label="Add a new address"]').click();
     }
     getCountryField(){

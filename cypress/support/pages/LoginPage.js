@@ -12,17 +12,21 @@ class LoginPage extends BasePage {
     }
 
     getLoginEmailField() {
+        cy.log ('Fill email field')
         return cy.get('#email');
     }
 
     getLoginPasswordField() {
+        cy.log ('Fill login field')
         return cy.get('#password');
     }
 
     getSubmitButton() {
+        cy.log ('Submit authorization')
         return cy.get('#loginButton').click();
     }
     getErrorMessageText() {
+        cy.log ('Error message should be appeared')
         return cy.get('div:contains(Invalid email or password)')
 
     }
@@ -33,16 +37,11 @@ class LoginPage extends BasePage {
         this.getLoginPasswordField().type(userpassword);
         this.getSubmitButton();
 
-        // if (cy.get ('.heading > .ng-star-inserted').should('exist')) {
-        //     cy.get('.heading > .ng-star-inserted').contains('All Products');
-        // }
     }
      getAllProductsTitle(){
+         cy.log ('Main page should be opened')
         return cy.get ('div:contains(All Products)')
 }
 
-   getNotYetCustomerButton(){
-      return  cy.get('#newCustomerLink a.primary-link').contains('Not yet a customer?').click();
-   }
 }
 export default new LoginPage()

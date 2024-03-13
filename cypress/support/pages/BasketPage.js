@@ -5,6 +5,7 @@ class BasketPage extends BasePage {
     //     cy.log('Basket Item')
     //     cy.visit('https://juice-shop-sanitarskyi.herokuapp.com/#/basket')
     getCheckoutBasketField (){
+        cy.log ('Checkout Item')
         return cy.get('#checkoutButton').click({force: true});
     }
 }
