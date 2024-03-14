@@ -1,7 +1,6 @@
 {
   "name": "exam",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,5 +9,9 @@
   "license": "ISC",
   "dependencies": {
     "cypress": "^13.6.6"
-  }
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1"
+  },
+  "description": ""
 }

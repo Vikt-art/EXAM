@@ -1,0 +1,16 @@
+{
+  "email": "viktoriya.matvienko12@gmail.com",
+  "password": "Viktoriia123",
+  "answer": "Test",
+  "invalidEmail": "viktoriya56@gmail.com",
+  "invalidPassword": "123",
+  "country": "Ukraine",
+  "name": "Viktoriia",
+  "phone": "0501462759",
+  "ZIP": "082300",
+  "address": "Kashtanova str., 25",
+  "city": "Kyiv",
+  "state": "test",
+  "cardnumber": "2222222222222222"
+
+}
