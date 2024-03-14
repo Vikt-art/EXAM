@@ -9,8 +9,9 @@ import selectAddressPage from "../support/pages/SelectAddressPage";
 import paymentOptionsPage from "../support/pages/PaymentOptionsPage";
 import orderPage from "../support/pages/OrderPage";
 import searchPage from "../support/pages/SearchPage";
+import registrationPage from "../support/pages/RegistrationPage";
 import {faker} from "@faker-js/faker";
-
+user.email =faker.internet.email({ firstName: 'Jeanne', lastName: 'Doe', provider: 'example.fakerjs.dev', allowSpecialCharacters: true })
 user.name = faker.person.firstName()
 user.country = faker.location.country()
 user.address = faker.location.street()
@@ -21,11 +22,14 @@ user.state = faker.location.state()
 describe('Order positive scenarios', () => {
     describe('Order positive scenarios', () => {
         it('Find an Item', () => {
-            mainPage.visit();
-            mainPage.closeBanner();
+            registrationPage.visit()
+            registrationPage.closeBanner()
+            registrationPage.fillRegistrationFields(user.email,user.password,user.answer)
+            mainPage.visit()
             mainPage.getAccountButton();
             mainPage.getLoginButton();
-            loginPage.fillLoginFields(user.email, user.password);
+            loginPage.fillLoginFields(user.email,user.password,user.answer)
+
 
             findItemByKeyword('Banana Juice (1000ml)')
             searchPage.getBasketField().click();

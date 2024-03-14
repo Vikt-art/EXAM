@@ -1,3 +1,4 @@
+import feedbackPage from "./pages/FeedbackPage";
 export function findItem(name) {
     cy.log('Search Item');
     let mojElement = cy.get('.item-name').filter((index, element) => {
